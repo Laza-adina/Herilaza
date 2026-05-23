@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works — Herilaza</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="works_style.css">
+    <link rel="stylesheet" href="loader.css">
+</head>
+<body>
+
+    <!-- Conteneur principal pour diviser l'écran en 2 -->
+    <div class="split-container">
+
+        <!-- ── MOITIÉ HAUT : Image de fond, Navigation et Présentation ── -->
+        <div class="top-side">
+            <header>
+                <nav>
+                    <a href="index.html">Accueil</a>
+                    <a href="about.html">Qui suis-je</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#" class="works-active">Réalisations</a>
+                </nav>
+                <span class="header-name">HERILAZA</span>
+            </header>
+
+            <div class="top-content">
+                <p class="top-label">Portfolio</p>
+                <h1 class="top-title">Mes Réalisations</h1>
+                <p class="top-sub">Explorez une sélection de mes projets récents. De la conception à l'exécution, découvrez mon univers créatif et technique.</p>
+            </div>
+        </div>
+
+        <!-- ── MOITIÉ BAS : Galerie avec scroll ── -->
+        <div class="bottom-side">
+            <section class="content" id="gallery-section">
+                
+                <!-- État vide (affiché si aucun projet via JS) -->
+                <div class="empty-state" id="empty-state">
+                    <div class="empty-inner">
+                        <div class="empty-line"></div>
+                        <p class="empty-title">Aucune réalisation pour l'instant</p>
+                        <p class="empty-sub">Vous voulez être la première collaboration ?</p>
+                        <a href="mailto:herilaza@email.com" class="empty-cta">Contactez-moi</a>
+                    </div>
+                </div>
+
+                <!-- Grille des projets -->
+                <div class="gallery" id="gallery">
+                    <!-- Les cartes seront injectées ici par Javascript -->
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+
+    <!-- ── POPUP (Modale pour les détails du projet) ── -->
+    <div class="popup-backdrop" id="popup-backdrop">
+        <div class="popup" id="popup">
+            <button class="popup-close" id="popup-close">&#x2715;</button>
+            
+            <!-- Conteneur de l'iframe interactive -->
+            <div class="popup-preview" id="popup-preview"></div>
+            
+            <div class="popup-body">
+                <span class="popup-num" id="popup-num"></span>
+                <h2 class="popup-title" id="popup-title"></h2>
+                <p class="popup-desc" id="popup-desc"></p>
+                <div class="popup-tags" id="popup-tags"></div>
+                <a class="popup-link" id="popup-link" href="#" target="_blank">Voir le projet →</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="works_script.js"></script>
+    <script src="loader.js"></script>
+</body>
+</html>

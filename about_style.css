@@ -1,0 +1,359 @@
+/* === TON CSS ORIGINAL — inchange === */
+
+body {
+    background-color: #c7ccc9;
+    font-family: "Smooch Sans", sans-serif;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-side2 {
+    width: 50%;
+    background-image: url("fond noir.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.left-side2 h1 {
+    font-size: 45px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.left-side2 p {
+    color: white;
+    font-size: 22px;
+    line-height: 1.5;
+    max-width: 80%;
+}
+
+.right-side2 {
+    width: 50%;
+    background-color: #c7ccc9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 22px;
+    transition: 0.3s ease;
+}
+
+.menu a:hover {
+    transform: translateX(5px);
+}
+
+.nom {
+    font-size: 70px;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 20px;
+}
+
+/* === AJOUTS === */
+
+/* DOTS */
+.dots-nav {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    display: block;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.4);
+}
+
+/* ANIMATION SCRAMBLE — les lettres */
+.letter {
+    display: inline-block;
+    transition: opacity 0.15s ease;
+}
+
+.letter.scrambling {
+    opacity: 0.4;
+}
+
+/* HIDDEN / VISIBLE */
+.hidden {
+    display: none !important;
+}
+
+.block-out {
+    animation: blockOut 0.25s ease forwards;
+}
+
+.block-in {
+    animation: blockIn 0.35s ease forwards;
+}
+
+@keyframes blockOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-12px); }
+}
+
+@keyframes blockIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* BOUTON CTA */
+.cta {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 34px;
+    background: white;
+    color: #333;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: "Smooch Sans", sans-serif;
+    border-radius: 3px;
+    transition: background 0.25s, color 0.25s, transform 0.25s;
+}
+
+.cta:hover {
+    background: #333;
+    color: white;
+    transform: translateX(5px);
+}
+
+/* INFO BLOCK (slide 2) */
+.info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-label {
+    font-size: 13px;
+    color: #888;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.info-value {
+    font-size: 34px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* LIST BLOCK (slides 3 & 4) */
+.list-block {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+.list-row {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    gap: 3px;
+    transition: padding-left 0.25s ease;
+    cursor: default;
+}
+
+.list-row:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.list-row:hover {
+    padding-left: 10px;
+}
+
+.list-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: #333;
+}
+
+.list-sub {
+    font-size: 17px;
+    color: #888;
+}
+/* ── SCROLL HINT ── */
+.scroll-hint {
+    position: fixed;
+    bottom: 36px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 50;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.scroll-hint.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scroll-hint span {
+    font-family: "Smooch Sans", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: rgba(0, 0, 0, 0.35);
+    text-transform: uppercase;
+}
+
+.mouse {
+    width: 22px;
+    height: 34px;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+.wheel {
+    width: 3px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+    animation: wheelScroll 1.4s ease infinite;
+}
+
+@keyframes wheelScroll {
+    0%   { transform: translateY(0);   opacity: 1; }
+    60%  { transform: translateY(8px); opacity: 0; }
+    61%  { transform: translateY(0);   opacity: 0; }
+    100% { transform: translateY(0);   opacity: 1; }
+}
+/* ======================================== */
+/*               RESPONSIVE                 */
+/* ======================================== */
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column; /* Empile les blocs à la verticale */
+    }
+
+    /* Le bloc noir avec le texte passe en haut */
+    .left-side2 {
+        width: 100%;
+        height: 45vh; /* Prend 45% de l'écran */
+        padding: 20px;
+        justify-content: center;
+    }
+
+    /* Le bloc gris avec les listes/menus passe en bas */
+    .right-side2 {
+        width: 100%;
+        height: 55vh; /* Prend 55% de l'écran */
+        padding: 20px;
+    }
+
+    /* --- Réduction des textes de la partie gauche --- */
+    .left-side2 h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .left-side2 p {
+        font-size: 16px; /* Texte plus petit pour le mobile */
+        max-width: 100%; /* Utilise toute la largeur disponible */
+        line-height: 1.3;
+    }
+
+    .cta {
+        margin-top: 15px;
+        padding: 10px 24px;
+        font-size: 18px;
+    }
+
+    /* --- Réduction des éléments de la partie droite --- */
+    .nom {
+        font-size: 45px;
+        margin-bottom: 10px;
+    }
+
+    .menu {
+        align-items: center;
+        gap: 15px;
+    }
+
+    .menu a {
+        font-size: 18px;
+    }
+
+    /* Blocs d'informations (Slide 2) */
+    .info-block {
+        gap: 15px;
+    }
+    
+    .info-value {
+        font-size: 22px;
+    }
+
+    /* Listes (Slides 3 & 4) */
+    .list-block {
+        width: 90%; /* Prend plus de place en largeur sur mobile */
+    }
+
+    .list-row {
+        padding: 10px 0;
+    }
+
+    .list-title {
+        font-size: 22px;
+    }
+
+    .list-sub {
+        font-size: 14px;
+    }
+
+    /* --- Ajustement de l'interface utilisateur --- */
+    .dots-nav {
+        bottom: 15px; /* Remonte légèrement les points */
+    }
+
+    /* On cache l'icône de la souris sur mobile (car on utilise le tactile/swipe) */
+    .scroll-hint {
+        display: none;
+    }
+}

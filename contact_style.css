@@ -1,0 +1,311 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Smooch Sans", sans-serif;
+    overflow: hidden;
+}
+
+/* ── LAYOUT : haut noir / bas gris ── */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* ── HAUT : FOND NOIR ── */
+.top-side {
+    height: 50%;
+    background-image: url("fond noir.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 64px;
+}
+
+.top-content {
+    max-width: 720px;
+    width: 100%;
+}
+
+.top-label {
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 16px;
+}
+
+.top-title {
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 500;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.top-sub {
+    font-size: 19px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    max-width: 520px;
+    margin-bottom: 28px;
+}
+
+/* ── INFOS DE CONTACT ── */
+.contact-infos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.info-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 18px;
+    transition: color 0.2s ease;
+}
+
+.info-link:hover {
+    color: white;
+}
+
+.info-link.whatsapp:hover {
+    color: #25d366;
+}
+
+.info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.info-link:hover .info-icon {
+    opacity: 1;
+}
+
+/* ── BAS : FOND GRIS ── */
+.bottom-side {
+    height: 50%;
+    background-color: #c7ccc9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 64px;
+}
+
+/* ── FORMULAIRE ── */
+.contact-form {
+    max-width: 720px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+}
+
+input,
+textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding: 8px 0;
+    font-size: 19px;
+    font-family: "Smooch Sans", sans-serif;
+    color: #333;
+    outline: none;
+    transition: border-color 0.25s ease;
+    resize: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(0,0,0,0.25);
+}
+
+input:focus,
+textarea:focus {
+    border-bottom-color: #333;
+}
+
+textarea {
+    rows: 3;
+}
+
+/* ── FOOTER FORMULAIRE ── */
+.form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #888;
+    font-size: 18px;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.back-link:hover {
+    color: #333;
+    transform: translateX(-4px);
+}
+
+.submit-btn {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    font-size: 20px;
+    font-family: "Smooch Sans", sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 130px;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    background: #000;
+    transform: translateX(4px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* LOADER BOUTON */
+.btn-loader {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* MESSAGES */
+.form-success,
+.form-error {
+    font-size: 17px;
+    padding: 10px 0;
+}
+
+.form-success {
+    color: #2a7a2a;
+}
+
+.form-error {
+    color: #aa2222;
+}
+
+.hidden {
+    display: none !important;
+}
+/* ======================================== */
+/*               RESPONSIVE                 */
+/* ======================================== */
+
+@media (max-width: 900px) {
+    /* 1. Règle d'or pour les formulaires sur mobile : on réactive le scroll */
+    body {
+        overflow-y: auto; 
+    }
+
+    .container {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    /* 2. On ajuste les blocs pour qu'ils s'adaptent à leur contenu */
+    .top-side, 
+    .bottom-side {
+        height: auto;
+        min-height: 50vh;
+        padding: 40px 24px; /* On réduit fortement les marges sur les côtés */
+        text-align: left;
+    }
+
+    /* 3. Ajustement des textes */
+    .top-sub {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    /* On empile les infos de contact verticalement */
+    .contact-infos {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* 4. Le formulaire */
+    .form-row {
+        /* Les champs "Nom" et "Email" passent l'un sous l'autre au lieu de côte à côte */
+        grid-template-columns: 1fr; 
+    }
+
+    /* 5. Le bouton et le lien de retour */
+    .form-footer {
+        flex-direction: column-reverse; /* Le bouton passe au-dessus, le lien retour en dessous */
+        align-items: stretch;
+        gap: 20px;
+        margin-top: 16px;
+    }
+
+    .submit-btn {
+        width: 100%; /* Le bouton devient bien large et facile à cliquer au doigt */
+        padding: 14px 20px;
+    }
+
+    .back-link {
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+/* Encore plus petit (vieux smartphones) */
+@media (max-width: 480px) {
+    .top-side, 
+    .bottom-side {
+        padding: 30px 16px;
+    }
+}

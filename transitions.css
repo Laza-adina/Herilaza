@@ -1,0 +1,32 @@
+.page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+    width: 0%;
+}
+
+.page-overlay.exit-index {
+    background: #e5e7e6;
+    pointer-events: all;
+    animation: exitIndex 0.7s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+}
+
+@keyframes exitIndex {
+    0%   { width: 50%; }
+    100% { width: 100%; }
+}
+
+.page-overlay.enter-about {
+    background: #0a0a0a;
+    width: 100%;
+    pointer-events: all;
+    animation: enterAbout 0.7s cubic-bezier(0.77, 0, 0.18, 1) 0.05s forwards;
+}
+
+@keyframes enterAbout {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}

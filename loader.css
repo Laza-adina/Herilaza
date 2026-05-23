@@ -1,0 +1,50 @@
+/* ── LOADER ── */
+.loader-overlay {
+    position: fixed;
+    inset: 0;
+    background: #0a0a0a;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+}
+
+.loader-overlay.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.loader-name {
+    font-family: "Smooch Sans", sans-serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 0.3em;
+}
+
+.loader-bar-track {
+    width: 120px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    overflow: hidden;
+}
+
+.loader-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: white;
+    animation: loaderFill 0.7s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+}
+
+@keyframes loaderFill {
+    0%   { width: 0%; }
+    100% { width: 100%; }
+}
