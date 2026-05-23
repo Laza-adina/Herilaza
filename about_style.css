@@ -1,15 +1,32 @@
-/* === TON CSS ORIGINAL — inchange === */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+    height: 100%;
+    touch-action: none;
+}
 
 body {
     background-color: #c7ccc9;
     font-family: "Smooch Sans", sans-serif;
     margin: 0;
+    padding: 0;
     overflow: hidden;
+    height: 100dvh;
+    width: 100vw;
+    touch-action: none;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .container {
     display: flex;
-    height: 100vh;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
 }
 
 .left-side2 {
@@ -23,6 +40,7 @@ body {
     align-items: center;
     padding: 40px;
     text-align: center;
+    overflow: hidden;
 }
 
 .left-side2 h1 {
@@ -45,6 +63,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .menu {
@@ -71,9 +90,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* === AJOUTS === */
-
-/* DOTS */
 .dots-nav {
     position: fixed;
     bottom: 28px;
@@ -99,7 +115,6 @@ body {
     transform: scale(1.4);
 }
 
-/* ANIMATION SCRAMBLE — les lettres */
 .letter {
     display: inline-block;
     transition: opacity 0.15s ease;
@@ -109,7 +124,6 @@ body {
     opacity: 0.4;
 }
 
-/* HIDDEN / VISIBLE */
 .hidden {
     display: none !important;
 }
@@ -132,7 +146,6 @@ body {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* BOUTON CTA */
 .cta {
     display: inline-block;
     margin-top: 28px;
@@ -152,7 +165,6 @@ body {
     transform: translateX(5px);
 }
 
-/* INFO BLOCK (slide 2) */
 .info-block {
     display: flex;
     flex-direction: column;
@@ -178,7 +190,6 @@ body {
     color: #333;
 }
 
-/* LIST BLOCK (slides 3 & 4) */
 .list-block {
     display: flex;
     flex-direction: column;
@@ -213,7 +224,7 @@ body {
     font-size: 17px;
     color: #888;
 }
-/* ── SCROLL HINT ── */
+
 .scroll-hint {
     position: fixed;
     bottom: 36px;
@@ -264,6 +275,7 @@ body {
     61%  { transform: translateY(0);   opacity: 0; }
     100% { transform: translateY(0);   opacity: 1; }
 }
+
 /* ======================================== */
 /*               RESPONSIVE                 */
 /* ======================================== */
@@ -271,39 +283,52 @@ body {
 @media (max-width: 900px) {
 
     body {
-        overflow: hidden; /* désactive le scroll natif */
-        height: 100dvh;   /* hauteur exacte de l'écran mobile */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100dvh;
+        overflow: hidden;
+        touch-action: none;
     }
+
     .container {
         flex-direction: column;
-        height: 100dvh;   
+        width: 100%;
+        height: 100dvh;
+        overflow: hidden;
     }
 
-    /* Le bloc noir avec le texte passe en haut */
     .left-side2 {
         width: 100%;
-        height: 45dvh; /* Prend 45% de l'écran */
-        padding: 20px;
+        height: 45dvh;
+        padding: 24px 20px;
         justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        flex-shrink: 0;
     }
 
-    /* Le bloc gris avec les listes/menus passe en bas */
     .right-side2 {
         width: 100%;
-        height: 55dvh; /* Prend 55% de l'écran */
+        height: 55dvh;
         padding: 20px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
     }
 
-    /* --- Réduction des textes de la partie gauche --- */
     .left-side2 h1 {
-        font-size: 32px;
+        font-size: 28px;
         margin-bottom: 10px;
     }
 
     .left-side2 p {
-        font-size: 16px; /* Texte plus petit pour le mobile */
-        max-width: 100%; /* Utilise toute la largeur disponible */
-        line-height: 1.3;
+        font-size: 15px;
+        max-width: 100%;
+        line-height: 1.4;
     }
 
     .cta {
@@ -312,33 +337,31 @@ body {
         font-size: 18px;
     }
 
-    /* --- Réduction des éléments de la partie droite --- */
     .nom {
-        font-size: 45px;
+        font-size: 40px;
         margin-bottom: 10px;
     }
 
     .menu {
         align-items: center;
-        gap: 15px;
+        gap: 12px;
     }
 
     .menu a {
         font-size: 18px;
     }
 
-    /* Blocs d'informations (Slide 2) */
     .info-block {
-        gap: 15px;
+        gap: 12px;
+        width: 85%;
     }
-    
+
     .info-value {
         font-size: 22px;
     }
 
-    /* Listes (Slides 3 & 4) */
     .list-block {
-        width: 90%; /* Prend plus de place en largeur sur mobile */
+        width: 90%;
     }
 
     .list-row {
@@ -346,19 +369,17 @@ body {
     }
 
     .list-title {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .list-sub {
-        font-size: 14px;
+        font-size: 13px;
     }
 
-    /* --- Ajustement de l'interface utilisateur --- */
     .dots-nav {
-        bottom: 15px; /* Remonte légèrement les points */
+        bottom: 12px;
     }
 
-    /* On cache l'icône de la souris sur mobile (car on utilise le tactile/swipe) */
     .scroll-hint {
         display: none;
     }

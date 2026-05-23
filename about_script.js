@@ -1,7 +1,7 @@
 const SLIDES = [
     {
         title: "Je suis :",
-        text:  "Je m'appelle Herilaza, développeur web passionné par la création de sites modernes et fonctionnels. HTML, CSS, JavaScript,je construis des expériences utilisateur qui ont du sens.",
+        text:  "Je m'appelle Herilaza, développeur web passionné par la création de sites modernes et fonctionnels. HTML, CSS, JavaScript, je construis des expériences utilisateur qui ont du sens.",
         right: "menu",
         cta:   false
     },
@@ -13,13 +13,13 @@ const SLIDES = [
     },
     {
         title: "Ce que je fais",
-        text:  "Automatiser ce qui se répète, construire ce qui manque, styliser ce qui sera vu. Python, web, problem solving,je cherche toujours la solution la plus propre.",
+        text:  "Automatiser ce qui se répète, construire ce qui manque, styliser ce qui sera vu. Python, web, problem solving, je cherche toujours la solution la plus propre.",
         right: "skills",
         cta:   false
     },
     {
         title: "En dehors du code",
-        text:  "Il n'y a peut-être pas un mot pour quelqu'un qui collectionne les passions sans ordre ni raison. Sports, musique, dark fantasy,je cherche encore ce mot.",
+        text:  "Il n'y a peut-être pas un mot pour quelqu'un qui collectionne les passions sans ordre ni raison. Sports, musique, dark fantasy, je cherche encore ce mot.",
         right: "passions",
         cta:   false
     },
@@ -33,10 +33,10 @@ const SLIDES = [
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#&%$!?";
 
-const titleEl  = document.getElementById('main-title');
-const textEl   = document.getElementById('main-text');
-const ctaEl    = document.getElementById('main-cta');
-const dots     = document.querySelectorAll('.dot');
+const titleEl = document.getElementById('main-title');
+const textEl  = document.getElementById('main-text');
+const ctaEl   = document.getElementById('main-cta');
+const dots    = document.querySelectorAll('.dot');
 
 const blocks = {
     menu:     document.getElementById('block-menu'),
@@ -55,19 +55,14 @@ function scramble(el, newText, duration = 600) {
         const steps    = Math.floor(duration / 30);
         let   step     = 0;
 
-        // Wrap each char in a span
         el.innerHTML = el.textContent
             .split('')
             .map(c => `<span class="letter">${c}</span>`)
             .join('');
 
-        const spans = el.querySelectorAll('.letter');
-
         const interval = setInterval(() => {
             step++;
             const progress = step / steps;
-
-            // Reconstruct the string : settled chars + random chars
             let html = '';
             for (let i = 0; i < newText.length; i++) {
                 const settled = i < Math.floor(progress * newText.length);
@@ -82,7 +77,7 @@ function scramble(el, newText, duration = 600) {
 
             if (step >= steps) {
                 clearInterval(interval);
-                el.innerHTML = newText; // clean final
+                el.innerHTML = newText;
                 resolve();
             }
         }, 30);
@@ -92,15 +87,15 @@ function scramble(el, newText, duration = 600) {
 /* ── SWITCH RIGHT BLOCK ── */
 function switchRight(newKey) {
     return new Promise(resolve => {
-        const current = Object.entries(blocks).find(([, el]) => !el.classList.contains('hidden'));
-        if (!current) {
+        const currentBlock = Object.entries(blocks).find(([, el]) => !el.classList.contains('hidden'));
+        if (!currentBlock) {
             blocks[newKey].classList.remove('hidden');
             blocks[newKey].classList.add('block-in');
             setTimeout(() => { blocks[newKey].classList.remove('block-in'); resolve(); }, 350);
             return;
         }
 
-        const [oldKey, oldEl] = current;
+        const [oldKey, oldEl] = currentBlock;
         if (oldKey === newKey) { resolve(); return; }
 
         oldEl.classList.add('block-out');
@@ -125,14 +120,12 @@ async function goTo(index) {
     current = index;
     dots[current].classList.add('active');
 
-    // Run scramble on title + text in parallel with right block switch
     await Promise.all([
         scramble(titleEl, slide.title, 500),
         scramble(textEl,  slide.text,  700),
         switchRight(slide.right)
     ]);
 
-    // CTA
     if (slide.cta) {
         ctaEl.classList.remove('hidden');
         ctaEl.classList.add('block-in');
@@ -163,16 +156,30 @@ window.addEventListener('keydown', (e) => {
 // Dots
 dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
 
-// Swipe mobile
-let tx = 0;
-window.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-window.addEventListener('touchend',   e => {
-    const diff = tx - e.changedTouches[0].clientX;
-    if (diff >  50) goTo(current + 1);
-    if (diff < -50) goTo(current - 1);
+// ── SWIPE MOBILE — vertical uniquement ──
+let touchStartX = 0;
+let touchStartY = 0;
+
+window.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, { passive: false });
+
+window.addEventListener('touchmove', e => {
+    e.preventDefault();
+}, { passive: false });
+
+window.addEventListener('touchend', e => {
+    const diffX = touchStartX - e.changedTouches[0].clientX;
+    const diffY = touchStartY - e.changedTouches[0].clientY;
+
+    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 40) {
+        if (diffY > 0) goTo(current + 1);
+        if (diffY < 0) goTo(current - 1);
+    }
 }, { passive: true });
 
-// Cache la souris après le premier scroll
+// Cache le scroll hint
 const scrollHint = document.querySelector('.scroll-hint');
 function hideHint() {
     if (scrollHint) {
