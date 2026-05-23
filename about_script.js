@@ -1,7 +1,7 @@
 const SLIDES = [
     {
         title: "Je suis :",
-        text:  "Je m'appelle Herilaza, développeur web passionné par la création de sites modernes et fonctionnels. HTML, CSS, JavaScript — je construis des expériences utilisateur qui ont du sens.",
+        text:  "Je m'appelle Herilaza, développeur web passionné par la création de sites modernes et fonctionnels. HTML, CSS, JavaScript,je construis des expériences utilisateur qui ont du sens.",
         right: "menu",
         cta:   false
     },
@@ -13,13 +13,13 @@ const SLIDES = [
     },
     {
         title: "Ce que je fais",
-        text:  "Automatiser ce qui se répète, construire ce qui manque, styliser ce qui sera vu. Python, web, problem solving — je cherche toujours la solution la plus propre.",
+        text:  "Automatiser ce qui se répète, construire ce qui manque, styliser ce qui sera vu. Python, web, problem solving,je cherche toujours la solution la plus propre.",
         right: "skills",
         cta:   false
     },
     {
         title: "En dehors du code",
-        text:  "Il n'y a peut-être pas un mot pour quelqu'un qui collectionne les passions sans ordre ni raison. Sports, musique, dark fantasy — je cherche encore ce mot.",
+        text:  "Il n'y a peut-être pas un mot pour quelqu'un qui collectionne les passions sans ordre ni raison. Sports, musique, dark fantasy,je cherche encore ce mot.",
         right: "passions",
         cta:   false
     },
