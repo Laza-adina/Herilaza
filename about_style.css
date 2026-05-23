@@ -269,14 +269,20 @@ body {
 /* ======================================== */
 
 @media (max-width: 900px) {
+
+    body {
+        overflow: hidden; /* désactive le scroll natif */
+        height: 100dvh;   /* hauteur exacte de l'écran mobile */
+    }
     .container {
-        flex-direction: column; /* Empile les blocs à la verticale */
+        flex-direction: column;
+        height: 100dvh;   
     }
 
     /* Le bloc noir avec le texte passe en haut */
     .left-side2 {
         width: 100%;
-        height: 45vh; /* Prend 45% de l'écran */
+        height: 45dvh; /* Prend 45% de l'écran */
         padding: 20px;
         justify-content: center;
     }
@@ -284,7 +290,7 @@ body {
     /* Le bloc gris avec les listes/menus passe en bas */
     .right-side2 {
         width: 100%;
-        height: 55vh; /* Prend 55% de l'écran */
+        height: 55dvh; /* Prend 55% de l'écran */
         padding: 20px;
     }
 
