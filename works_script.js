@@ -17,6 +17,15 @@ const PROJECTS = [
         desc:  "Portfolio web d'un auteur de science-fiction (Dani Randri). Présentation de ses œuvres, biographie, et section de contact avec un design épuré.",
         tags:  ["ReactJS", "Tailwind CSS"],
         link:  "https://dani-randri.vercel.app"
+    },
+    {
+        id:    2,
+        num:   "03",
+        name:  "site professionnel",
+        img:   "rz1.PNG", // Image miniature pour la galerie
+        desc:  "Site professionnel pour les un entreprise de transport.",
+        tags:  ["ReactJS", "Tailwind CSS"],
+        link:  "https://rz-test-2-a1np.vercel.app/"
     }
 ];
 
