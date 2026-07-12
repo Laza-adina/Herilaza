@@ -31,7 +31,7 @@ const PROJECTS = [
         id:    4,
         num:   "04",
         name:  "site pour une salle de sprot",
-        img:   "fitnice loogo.PNG", // Image miniature pour la galerie
+        img:   "fitnice.PNG", // Image miniature pour la galerie
         desc:  "Site pour la presentation et vente de produits d'une salle de sport.",
         tags:  ["ReactJS", "Tailwind CSS"],
         link:  "https://fitnice.vercel.app/"
