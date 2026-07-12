@@ -19,13 +19,31 @@ const PROJECTS = [
         link:  "https://dani-randri.vercel.app"
     },
     {
-        id:    2,
+        id:    3,
         num:   "03",
         name:  "site professionnel",
         img:   "rz1.PNG", // Image miniature pour la galerie
         desc:  "Site professionnel pour les un entreprise de transport.",
         tags:  ["ReactJS", "Tailwind CSS"],
         link:  "https://rz-test-2-a1np.vercel.app/"
+    },
+    {
+        id:    4,
+        num:   "04",
+        name:  "site pour une salle de sprot",
+        img:   "fitnice loogo", // Image miniature pour la galerie
+        desc:  "Site pour la presentation et vente de produits d'une salle de sport.",
+        tags:  ["ReactJS", "Tailwind CSS"],
+        link:  "https://fitnice.vercel.app/"
+    },
+    {
+        id:    5,
+        num:   "05",
+        name:  "site pour vente et location de vehicule d'ocasion",
+        img:   "isera.PNG", // Image miniature pour la galerie
+        desc:  "Site de vente et location de vehicule d'ocasion.",
+        tags:  ["ReactJS", "Tailwind CSS"],
+        link:  "https://i-sera.vercel.app/"
     }
 ];
 
